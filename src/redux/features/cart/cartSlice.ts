@@ -1,4 +1,4 @@
-import { floatFixed } from "@/utility/FloatFixed";
+import { floatFixed } from "@/utility/floatFixed";
 import { IProduct } from "./../../../types/products";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
@@ -45,8 +45,10 @@ const cartSlice = createSlice({
 
     removeFromCart(state, action: PayloadAction<number>) {
       const productId = action.payload;
-      state.items = state.items.filter((item) => item.id !== productId);
       const existingProduct = state.items.find((item) => item.id === productId);
+      if (existingProduct) {
+        state.items = state.items.filter((item) => item.id !== productId);
+      }
       state.totalAmount -= existingProduct!.price! * existingProduct!.quantity!;
 
       state.totalAmount = floatFixed(state.totalAmount, 2);

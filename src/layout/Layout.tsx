@@ -6,15 +6,17 @@ const Layout = ({ children }: {
     children: React.ReactNode
 }) => {
     return (
-        <main
-            className=''
+        <div
+            className='flex flex-col h-screen'
         >
             <Header />
-            {children}
+            <main
 
+            >  {children}
+
+            </main>
             <Footer />
-
-        </main>
+        </div>
     )
 }
 

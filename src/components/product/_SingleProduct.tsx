@@ -10,9 +10,9 @@ const SingleProductPage = (props: IProductProps) => {
 
     return (
         <div className="container mx-auto my-5">
-            <div className="flex flex-col md:flex-row">
-                <div className="md:w-1/2">
-                    <img src={product?.image} alt={product?.title} className="w-full" />
+            <div className="flex flex-col md:flex-row justify-around">
+                <div className="md:w-72">
+                    <img src={product?.image} alt={product?.title} />
                 </div>
                 <div className="md:w-1/2 md:ml-6 mt-4 md:mt-0">
                     <h2 className="text-2xl font-bold mb-2">{product?.title}</h2>

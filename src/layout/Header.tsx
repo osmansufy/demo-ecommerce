@@ -1,19 +1,22 @@
 import React from 'react'
 import { navItems } from './helper'
 import Link from 'next/link'
+import { useAppSelector } from '@/redux/hook'
 
 
 
 const Header = () => {
+
+    const { items } = useAppSelector(state => state.cart)
     return (
-        <header className="flex justify-between w-full items-center  bg-gray-100">
+        <header className="flex justify-between  sticky top-0 z-50  w-full items-center  bg-gray-100">
 
             <nav
-                className='flex justify-between w-full items-center  bg-gray-900'
+                className='flex justify-between   w-full items-center  bg-gray-900'
             >
                 <ul
 
-                    className="w-1/2 flex items-center  justify-between 
+                    className="w-80 mx-auto flex items-center  justify-between 
                 p-4">
                     {
                         navItems.map((item) => (
@@ -27,7 +30,20 @@ const Header = () => {
 
                     }
                 </ul>
+
+
             </nav>
+            <div className="cart">
+                <Link href="/cart">
+                    <p className="flex items-center justify-center w-12 h-12 bg-blue-500 rounded-full text-white">
+                        <span className="text-xl font-semibold">🛒</span>
+                        <sup className="text-sm font-semibold">{
+                            items.length
+                        }</sup>
+                    </p>
+                </Link>
+
+            </div>
         </header>
 
     )
