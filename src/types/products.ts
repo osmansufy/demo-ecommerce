@@ -13,3 +13,11 @@ export interface Rating {
   rate: number;
   count: number;
 }
+
+export interface IProductProps {
+  product: IProduct;
+  isItemInCart?: IProduct;
+  handleIncrement?: () => void;
+  handleDecrement?: () => void;
+  handleAddToCart?: () => void;
+}

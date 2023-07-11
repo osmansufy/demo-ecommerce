@@ -4,12 +4,27 @@ import { getProducts } from "@/queries/getProducts";
 import { getProductsByCategory } from "@/queries/getProductsByCategory";
 import { IProduct } from "@/types/products";
 import { GetStaticPaths, GetStaticProps } from "next";
+import { useRouter } from "next/router";
 
 
 export default function Home({ products, categories }: {
     products: IProduct[]
     categories: string[]
 }) {
+
+    const router = useRouter()
+
+    if (router.isFallback) {
+        return <div className="container">
+            {/* Spinner */}
+
+            <div className="spinner-border text-primary" role="status">
+                <span className="visually-hidden">Loading...</span>
+            </div>
+
+        </div>
+    }
+
 
     return (
 

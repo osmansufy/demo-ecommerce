@@ -44,7 +44,7 @@ const ShopBlock = ({ products, categories }: {
 
 
 
-            <div className='flex  items-center justify-between flex-wrap gap-4'>
+            <div className='  grid grid-col-2 sm:grid-cols-4 gap-10'>
                 {
                     filteredProducts.map((product: IProduct) => (
 

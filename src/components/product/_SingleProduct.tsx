@@ -1,11 +1,12 @@
-import { IProduct } from '@/types/products';
+import { IProduct, IProductProps } from '@/types/products';
 import Link from 'next/link';
 import React from 'react';
+import withCart from '../HOC/withCart';
+import CartUpdate from '../common/CartUpdate';
+import AddToCart from '../common/AddToCart';
 
-const SingleProductPage = ({ product }: {
-    product: IProduct
-}) => {
-
+const SingleProductPage = (props: IProductProps) => {
+    const { product, isItemInCart, handleIncrement, handleDecrement, handleAddToCart } = props
 
     return (
         <div className="container mx-auto my-5">
@@ -26,13 +27,23 @@ const SingleProductPage = ({ product }: {
                         <span className="mr-1 text-yellow-500">{product?.rating?.rate}</span>
                         <span className="text-gray-500">({product?.rating?.count} reviews)</span>
                     </div>
-                    <button className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
-                        Add to Cart
-                    </button>
+                    {
+                        isItemInCart && (
+                            <CartUpdate
+                                onIncrement={handleIncrement!}
+                                onDecrement={handleDecrement!}
+                                quantity={isItemInCart.quantity!}
+                            />
+                        )
+                    }
+                    <AddToCart
+                        onAddToCart={handleAddToCart!}
+                        title={isItemInCart ? 'Go to Cart' : 'Add to Cart'}
+                    />
                 </div>
             </div>
         </div>
     );
 };
 
-export default SingleProductPage;
+export default withCart(SingleProductPage); 
