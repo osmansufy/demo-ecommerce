@@ -1,20 +1,41 @@
 import { IProduct } from '@/types/products'
-import React from 'react'
+import React, { useMemo } from 'react'
 import Rating from '../Icons/Rating'
 import Link from 'next/link'
 import AddToCart from './AddToCart'
 import CartUpdate from './CartUpdate'
-import { addToCart } from '@/redux/features/cart/cartSlice'
-import { useAppDispatch } from '@/redux/hook'
+import { addToCart, removeSingle } from '@/redux/features/cart/cartSlice'
+import { useAppDispatch, useAppSelector } from '@/redux/hook'
+import { useRouter } from 'next/router'
 
 const ProductCard = ({ product }: {
     product: IProduct
 }) => {
 
+    const router = useRouter()
     const dispatch = useAppDispatch()
 
+    const { items } = useAppSelector(state => state.cart)
+
     const handleAddToCart = () => {
+        if (isItemInCart) {
+            return router.push('/cart')
+        } else {
+            dispatch(addToCart(product))
+        }
+    }
+
+    const isItemInCart = useMemo(() => {
+        return items.find(item => item.id === product.id)
+
+    }, [items, product.id])
+
+    const handleIncrement = () => {
         dispatch(addToCart(product))
+    }
+
+    const handleDecrement = () => {
+        dispatch(removeSingle(product.id))
     }
     return (
         <div className="w-80 bg-white shadow rounded">
@@ -52,10 +73,18 @@ const ProductCard = ({ product }: {
                 </p>
                 <h1 className="text-gray-800 text-center mt-1">{product?.title || ""}</h1>
                 <p className="text-center text-gray-800 mt-1">€{product?.price}</p>
-                <CartUpdate />
+                {
+                    isItemInCart && (
+                        <CartUpdate
+                            onIncrement={handleIncrement}
+                            onDecrement={handleDecrement}
+                            quantity={isItemInCart.quantity!}
+                        />
+                    )
+                }
                 <AddToCart
                     onAddToCart={handleAddToCart}
-
+                    title={isItemInCart ? 'Go to Cart' : 'Add to Cart'}
                 />
 
             </div>

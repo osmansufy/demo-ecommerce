@@ -2,9 +2,11 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 
 const AddToCart = ({
-    onAddToCart
+    onAddToCart,
+    title
 }: {
     onAddToCart: () => void
+    title: string
 }) => {
 
 
@@ -13,7 +15,7 @@ const AddToCart = ({
             onClick={() => onAddToCart()}
             className="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600 active:bg-blue-700 disabled:opacity-50 mt-4 w-full flex items-center justify-center">
 
-            Add to Cart
+            {title}
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6 ml-2"

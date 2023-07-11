@@ -1,3 +1,4 @@
+import { floatFixed } from "@/utility/FloatFixed";
 import { IProduct } from "./../../../types/products";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
@@ -25,8 +26,11 @@ const cartSlice = createSlice({
       } else {
         state.items.push({ ...product, quantity: 1 });
       }
+
+      state.totalAmount += product.price!;
+      state.totalAmount = floatFixed(state.totalAmount, 2);
     },
-    removeSingleItemFromCart(state, action: PayloadAction<number>) {
+    removeSingle(state, action: PayloadAction<number>) {
       const productId = action.payload;
       const existingProduct = state.items.find((item) => item.id === productId);
       if (existingProduct) {
@@ -35,11 +39,17 @@ const cartSlice = createSlice({
           state.items = state.items.filter((item) => item.id !== productId);
         }
       }
+      state.totalAmount -= existingProduct!.price!;
+      state.totalAmount = floatFixed(state.totalAmount, 2);
     },
 
     removeFromCart(state, action: PayloadAction<number>) {
       const productId = action.payload;
       state.items = state.items.filter((item) => item.id !== productId);
+      const existingProduct = state.items.find((item) => item.id === productId);
+      state.totalAmount -= existingProduct!.price! * existingProduct!.quantity!;
+
+      state.totalAmount = floatFixed(state.totalAmount, 2);
     },
     clearCart(state) {
       state.items = [];
@@ -47,6 +57,7 @@ const cartSlice = createSlice({
   },
 });
 
-export const { addToCart, removeFromCart, clearCart } = cartSlice.actions;
+export const { addToCart, removeFromCart, removeSingle, clearCart } =
+  cartSlice.actions;
 
 export default cartSlice.reducer;
