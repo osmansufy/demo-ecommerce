@@ -7,6 +7,10 @@ export enum SortBy {
 
 export const sortOptions = [
   {
+    name: "Default",
+    value: SortBy.Default,
+  },
+  {
     name: "Price",
     value: SortBy.Price,
   },
@@ -17,9 +21,5 @@ export const sortOptions = [
   {
     name: "Title",
     value: SortBy.Title,
-  },
-  {
-    name: "Default",
-    value: SortBy.Default,
   },
 ];

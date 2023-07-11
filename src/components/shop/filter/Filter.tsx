@@ -69,7 +69,6 @@ const Filter = ({
                     className="border border-gray-300 rounded-md px-2 py-1 uppercase text-gray-500 text-sm"
                     name="sort"
                     id="sort"
-                    defaultValue={SortBy.Default}
                     onChange={handleSortChange}
                 >
                     {
