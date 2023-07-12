@@ -26,7 +26,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
     const category = params?.category
 
-    console.log(context)
     let products: IProduct[] = []
     try {
         if (category) {

@@ -32,8 +32,9 @@ const Filter = ({
 
 
     return (
-        <div className="flex justify-between items-center mb-5 border  
-        p-4 rounded-md border-gray-300
+        <div className="flex justify-between md:items-center mb-5 border  
+        p-4 rounded-md border-gray-300 gap-y-3
+        flex-col md:flex-row
         ">
 
             <div className="flex items-center gap-4 uppercase">
@@ -44,18 +45,18 @@ const Filter = ({
                     "
                     name="category"
                     id="category"
-
+                    defaultValue={router.query.category as string}
                     onChange={handleCategoryChange}
                 >
 
                     <option value="all"
-                        selected={router.query.category === 'all'}
+
                     >all</option>
                     {!CheckHelper.isEmptyArray(categories) &&
                         categories.map((category) => (
                             <option key={category}
                                 className='capitalize'
-                                selected={router.query.category === category}
+
                                 value={category}>{category}</option>
                         ))
                     }
@@ -70,11 +71,12 @@ const Filter = ({
                     name="sort"
                     id="sort"
                     onChange={handleSortChange}
+                    defaultValue={router.query.sort as string}
                 >
                     {
                         sortOptions.map((sort) => (
                             <option key={sort.value}
-                                selected={router.query.sort === sort.value}
+
                                 value={sort.value}>{sort.name}</option>
                         ))
                     }

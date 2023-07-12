@@ -10,7 +10,7 @@ const ProductCard = (props: IProductProps) => {
 
 
     return (
-        <div className="w-80 bg-white shadow rounded flex flex-col justify-between">
+        <div className=" bg-white shadow rounded flex flex-col justify-between">
             <Link href={`/products/${product?.id}`}>
                 <div
                     className="h-48 w-full bg-gray-200 flex flex-col justify-between p-4 bg-cover bg-center"

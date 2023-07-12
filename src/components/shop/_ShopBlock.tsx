@@ -44,7 +44,7 @@ const ShopBlock = ({ products, categories }: {
 
 
 
-            <div className='  grid grid-col-2 sm:grid-cols-4 gap-10'>
+            <div className='  grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5'>
                 {
                     filteredProducts.map((product: IProduct) => (
 

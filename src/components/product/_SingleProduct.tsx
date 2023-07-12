@@ -20,7 +20,7 @@ const SingleProductPage = (props: IProductProps) => {
                     <div className="flex items-center justify-between">
                         <span className="text-gray-800 font-bold text-lg">${product?.price}</span>
                         <Link href={`/categories/${product?.category}`}>
-                            <span className="text-sm text-gray-500">{product?.category}</span>
+                            <span className="text-sm text-gray-500 border p-2 capitalize">{product?.category}</span>
                         </Link>
                     </div>
                     <div className="flex items-center mt-2">

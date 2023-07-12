@@ -35,7 +35,7 @@ const SingleCartItem = (props: IProductProps) => {
                     <div className="flex items-center border-gray-100">
                         <span
                             onClick={handleDecrement}
-                            className="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:bg-blue-500 hover:text-blue-50">
+                            className="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 font-bold duration-100 hover:bg-blue-500 hover:text-blue-50">
                             -
                         </span>
                         <input
