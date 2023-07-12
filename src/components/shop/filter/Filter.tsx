@@ -1,4 +1,4 @@
-import { SortBy, sortOptions } from '@/enums/sortBy'
+import { sortOptions } from '@/enums/sortBy'
 import CheckHelper from '@/utility/checkHelper'
 import { useRouter } from 'next/router'
 import React from 'react'

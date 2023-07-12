@@ -33,7 +33,18 @@ const ShopBlock = ({ products, categories }: {
     }, [products, sort])
     // check if products exist and return not found if not
 
-    if (CheckHelper.isEmptyArray(products)) return <div>Not found</div>
+    if (CheckHelper.isEmptyArray(products)) return (
+        <div className="container">
+            <div className="text-center">
+                <h1 className="text-2xl font-bold">No products found</h1>
+                <button className="mt-5 bg-gray-800 text-white px-3 py-2 rounded-md"
+                    onClick={() => router.push('/shop')}
+                >Go back to shop</button>
+
+            </div>
+        </div>
+
+    )
 
     return (
         <div className="container mx-auto my-5">

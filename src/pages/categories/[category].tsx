@@ -1,6 +1,5 @@
 import ShopBlock from "@/components/shop/_ShopBlock";
 import { getCategories } from "@/queries/getCategories";
-import { getProducts } from "@/queries/getProducts";
 import { getProductsByCategory } from "@/queries/getProductsByCategory";
 import { IProduct } from "@/types/products";
 import { GetStaticPaths, GetStaticProps } from "next";
@@ -26,6 +25,20 @@ export default function Home({ products, categories }: {
     }
 
 
+    if (!products || !categories) {
+        return <div className="container">
+            <div className="text-center">
+                <h1 className="text-2xl font-bold">No products found</h1>
+                <button className="mt-5 bg-gray-800 text-white px-3 py-2 rounded-md"
+                    onClick={() => router.push('/shop')}
+                >Go back to shop</button>
+
+            </div>
+        </div>
+    }
+
+
+
     return (
 
         <ShopBlock products={products}
@@ -38,6 +51,13 @@ export default function Home({ products, categories }: {
 export const getStaticPaths: GetStaticPaths = async () => {
 
     const categories: string[] = await getCategories()
+
+    if (!categories) {
+        return {
+            paths: [],
+            fallback: true
+        }
+    }
 
     const paths = categories.map((category: string) => ({
         params: { category },

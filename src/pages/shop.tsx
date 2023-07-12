@@ -6,7 +6,7 @@ import { IProduct } from "@/types/products";
 import { GetStaticProps } from "next";
 
 
-export default function Home({ products, categories }: {
+export default function shop({ products, categories }: {
     products: IProduct[]
     categories: string[]
 }) {
@@ -20,19 +20,14 @@ export default function Home({ products, categories }: {
 }
 
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps = async () => {
 
-    const { params } = context
 
-    const category = params?.category
 
-    let products: IProduct[] = []
+
     try {
-        if (category) {
-            products = await getProductsByCategory(category as string)
-        } else {
-            products = await getProducts()
-        }
+        const products: IProduct[] = [] = await getProducts()
+
         const categories: string[] = await getCategories()
         if (!products) {
             return {
