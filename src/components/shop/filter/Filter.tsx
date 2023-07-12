@@ -25,7 +25,18 @@ const Filter = ({
 
     const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
 
-        router.push(`/shop?sort=${e.target.value}`)
+        const category = router.query.category;
+
+        const sort = e.target.value
+
+        if (category) {
+            router.push(`/categories/${category}?sort=${sort}`)
+
+        } else {
+            router.push(`/shop?sort=${sort}`)
+
+        }
+
 
     }
 
