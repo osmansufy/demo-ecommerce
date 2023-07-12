@@ -7,8 +7,6 @@ import { IProduct, IProductProps } from '@/types/products'
 
 const ProductCard = (props: IProductProps) => {
     const { product, isItemInCart, handleIncrement, handleDecrement, handleAddToCart } = props
-
-
     return (
         <div className=" bg-white shadow rounded flex flex-col justify-between">
             <Link href={`/products/${product?.id}`}>
@@ -43,7 +41,9 @@ const ProductCard = (props: IProductProps) => {
 
                     {product?.category || 'category'}
                 </p>
-                <h1 className="text-gray-800 text-center mt-1">{product?.title || ""}</h1>
+                <Link href={`/products/${product?.id}`}>
+                    <h1 className="text-gray-800 text-center mt-1">{product?.title || ""}</h1>
+                </Link>
                 <p className="text-center text-gray-800 mt-1">€{product?.price}</p>
                 {
                     isItemInCart && (

@@ -5,34 +5,103 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 First, run the development server:
 
 ```bash
-npm run dev
-# or
+
 yarn dev
 # or
-pnpm dev
+
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+page: index.tsx
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+```tsx
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Home page of the project
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Home page is same as shop page
 
-## Learn More
+```
 
-To learn more about Next.js, take a look at the following resources:
+page: shop.tsx
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```tsx
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Shop page of the project
 
-## Deploy on Vercel
+all products are listed here
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+user can filter products by category
+
+& sort products by price,title and rating
+
+
+User can add products to cart
+
+& increments and decrements the quantity of the product in the cart (with the help of Redux)
+
+```
+
+page: categories/[category].tsx
+
+```tsx
+
+category page of the project
+
+dynamic category page
+
+page is generated dynamically based on the category name in the url (with the help of getStaticPaths & getStaticProps)
+
+products are filtered by category here
+
+
+
+```
+
+page: products/[id].tsx
+
+```tsx
+
+product page of the project
+
+dynamic product page
+
+product details are listed here with SSG
+
+user can add product to cart from here (with the help of Redux)
+
+```
+
+page: cart.tsx
+
+```tsx
+
+cart page of the project
+
+cart items are listed here .
+
+user can increments & decrements the quantity of product  & remove the product in the cart (with the help of Redux)
+
+```
+
+```
+State Management: Redux
+
+```
+
+Cart Reducer: cartSlice.ts
+
+```
+
+cart reducer is used to manage cart items
+
+```
+
+Styling: Tailwind CSS
+
+```
+
+tailwind css is used for styling
+
+```
