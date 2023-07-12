@@ -1,12 +1,11 @@
 import withCart from '@/components/HOC/withCart'
 import { removeFromCart } from '@/redux/features/cart/cartSlice'
 import { useAppDispatch } from '@/redux/hook'
-import { IProduct, IProductProps } from '@/types/products'
+import { IProductProps } from '@/types/products'
 import Link from 'next/link'
-import React from 'react'
 
 const SingleCartItem = (props: IProductProps) => {
-    const { product, isItemInCart, handleIncrement, handleDecrement, handleAddToCart } = props
+    const { product, handleIncrement, handleDecrement } = props
     const dispatch = useAppDispatch()
     const handleRemove = () => {
         dispatch(removeFromCart(product.id))
@@ -50,9 +49,7 @@ const SingleCartItem = (props: IProductProps) => {
                         </span>
                     </div>
                     <div className="flex items-center space-x-4">
-                        <p className="text-sm">{
-                            product.price
-                        } $</p>
+                        <p className="text-sm">{product.price}$</p>
                         <svg
                             onClick={handleRemove}
                             xmlns="http://www.w3.org/2000/svg"
