@@ -1,10 +1,9 @@
 "use client"
-
 import { sortOptions } from '@/enums/sortBy'
 import CheckHelper from '@/utility/checkHelper'
 import { useRouter, useParams, useSearchParams } from 'next/navigation'
 import React from 'react'
-
+import parse from 'html-react-parser'
 const Filter = ({
     categories
 }: {
@@ -45,7 +44,7 @@ const Filter = ({
     }
 
 
-
+    console.log(category && parse(category as string))
     return (
         <div className="flex justify-between md:items-center mb-5 border  
         p-4 rounded-md border-gray-300 gap-y-3
@@ -60,7 +59,7 @@ const Filter = ({
                     "
                     name="category"
                     id="category"
-                    defaultValue={category as string}
+                    defaultValue={category ? parse(category as string) as string : 'all'}
                     onChange={handleCategoryChange}
                 >
 
@@ -68,11 +67,11 @@ const Filter = ({
 
                     >all</option>
                     {!CheckHelper.isEmptyArray(categories) &&
-                        categories.map((category) => (
-                            <option key={category}
+                        categories.map((singleCat) => (
+                            <option key={singleCat}
                                 className='capitalize'
-
-                                value={category}>{category}</option>
+                                selected={category === singleCat}
+                                value={singleCat}>{singleCat}</option>
                         ))
                     }
                 </select>

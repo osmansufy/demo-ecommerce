@@ -1,3 +1,5 @@
+"use client"
+
 import { useAppSelector } from '@/redux/hook';
 import SingleCartItem from './SingleCartItem';
 import TotalSum from './TotalSum';

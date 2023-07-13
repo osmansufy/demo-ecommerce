@@ -1,6 +1,7 @@
 import { IProduct } from '@/types/products'
 import Link from 'next/link'
 import Rating from '../Icons/Rating'
+import ProductBtn from './ProductBtn/ProductBtn'
 
 const ProductCard = ({ product }: {
     product: IProduct
@@ -44,7 +45,7 @@ const ProductCard = ({ product }: {
                 </Link>
                 <p className="text-center text-gray-800 mt-1">€{product?.price}</p>
 
-
+                <ProductBtn product={product} />
             </div>
         </div>
 

@@ -8,10 +8,10 @@ const Header = () => {
 
     return (
 
-        <header className="flex justify-between   px-3 items-center  bg-gray-100">
+        <header className="flex justify-between    items-center  bg-gray-400">
 
             <nav
-                className='flex justify-between   w-full items-center  bg-gray-900'
+                className='flex justify-between   w-full items-center  '
             >
                 <ul
 
@@ -22,7 +22,9 @@ const Header = () => {
 
                             <li key={item.name} className="px-2">
                                 <Link href={item.path}>
-                                    <span className="text-blue-500 hover:text-blue-700">{item.name}</span>
+                                    <span className=" text-primary-500 hover:text-primary-600 cursor-pointer
+                                    
+                                    ">{item.name}</span>
                                 </Link>
                             </li>
                         ))
