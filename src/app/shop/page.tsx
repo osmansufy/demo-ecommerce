@@ -10,12 +10,9 @@ export default async function Home({
   searchParams: { [key: string]: string | string[] | undefined }
 }) {
   const [products, categories] = await Promise.allSettled([getProducts(), getCategories()])
-  console.log(products, categories)
   if (products.status === 'rejected' || categories.status === 'rejected') {
     return <div>Something went wrong</div>
   }
-
-
   if (products.status === 'fulfilled' && categories.status === 'fulfilled') {
 
     return (
